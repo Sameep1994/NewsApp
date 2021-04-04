@@ -16,10 +16,19 @@
 	 <parent>
 	       	<groupId>com.stackroute</groupId>
 	      	<artifactId>newsapp</artifactId>   
-		<version>1.0</version>
+			<version>1.0</version>
 	</parent>
 	<dependencies>
 		<!--Add project specific dependencies here  -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

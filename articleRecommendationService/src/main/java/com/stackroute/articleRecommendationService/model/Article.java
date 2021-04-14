@@ -1,9 +1,14 @@
 package com.stackroute.articleRecommendationService.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="Article")
 public class Article {
+
+    @Id
+    private String id;
+
     private String author;
 
     private String title;
@@ -102,5 +107,22 @@ public class Article {
 
     public void setIsAdded(String isAdded) {
         this.isAdded = isAdded;
+    }
+
+//    public ObjectId getId() {
+//        return id;
+//    }
+//
+//    public void setId(ObjectId id) {
+//        this.id = id;
+//    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

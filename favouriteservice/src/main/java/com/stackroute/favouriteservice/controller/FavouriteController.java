@@ -35,8 +35,8 @@ public class FavouriteController {
         String s = id.toString();
         ObjectId objectId=mapper.convertValue(s,ObjectId.class);
 
-        Boolean isFavSet = favouriteService.setFavourite(objectId);
-        return new ResponseEntity<Boolean>(isFavSet, HttpStatus.OK);
+        List<Article> articles = favouriteService.removeFavourite(objectId);
+        return new ResponseEntity<List<Article>>(articles, HttpStatus.OK);
     }
 
     @GetMapping("/getAllFavourites")

@@ -13,16 +13,27 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class FavouriteController {
 
     @Autowired
     private FavouriteService favouriteService;
 
-    @RequestMapping(value = "favourite/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> setFavourite(@PathVariable("id") String id) throws IOException {
+    @PostMapping(value = "favourite/{id}")
+    public ResponseEntity<?> setFavourite(@PathVariable("id") Object id) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        ObjectId objectId=mapper.readValue(id,ObjectId.class);
+        String s = id.toString();
+        ObjectId objectId=mapper.convertValue(s,ObjectId.class);
+
+        Boolean isFavSet = favouriteService.setFavourite(objectId);
+        return new ResponseEntity<Boolean>(isFavSet, HttpStatus.OK);
+    }
+
+    @PostMapping(value="removefavourite/{id}")
+    public  ResponseEntity<?> removeFavourite(@PathVariable("id") Object id) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        String s = id.toString();
+        ObjectId objectId=mapper.convertValue(s,ObjectId.class);
 
         Boolean isFavSet = favouriteService.setFavourite(objectId);
         return new ResponseEntity<Boolean>(isFavSet, HttpStatus.OK);

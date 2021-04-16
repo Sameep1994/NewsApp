@@ -24,6 +24,16 @@ public class FavouriteService {
        return true;
     }
 
+    public Boolean removeFavourite(ObjectId id){
+        Article favArticle = favouriteRepository.findById(id);
+        if(favArticle==null){
+            return false;
+        }
+        favArticle.setIsAdded("false");
+        favouriteRepository.save(favArticle);
+        return true;
+    }
+
     public List<Article> getAllFavourites(){
         List<Article> favArticles = favouriteRepository.findAllByisAdded("true");
         return favArticles;

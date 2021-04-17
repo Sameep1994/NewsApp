@@ -1,0 +1,18 @@
+<div *ngIf='articles.length>0' class="align-center">
+  <h2 style="color:green">Here are the list of your recommended topics : </h2>
+  <div class="flexcontainer">
+    <div class="custom-card" *ngFor="let article of articles">
+      <mat-card id="#article-card" class="card">
+        <mat-card-header>
+          <mat-card-title class="truncate-title">{{article.title}}</mat-card-title>
+          <span class="material-icons" (click)="onClick(article)">
+            bookmark_border
+          </span>
+        </mat-card-header>
+        <div class="image-container">
+          <img mat-card-image src='{{article.urlToImage}}' class="mat-card-image">
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

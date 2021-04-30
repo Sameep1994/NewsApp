@@ -34,4 +34,5 @@ public class ArticleServiceTest {
         when(repository.saveAll(anyCollection())).thenReturn(anyList());
         Assert.assertNotNull(articleService.getRecommendedArticle());
     }
+
 }
